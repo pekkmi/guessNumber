@@ -7,21 +7,33 @@ using namespace std;
 int game(int maxnum);
 
 
-int game() {
+
+int main()
+{
+    int numberOfGuesses = 0;
+    int maxnum = 40;
+    numberOfGuesses = game(maxnum);
+
+
+}
+
+int game(int maxnum) {
 
     int rNumber = 0;
     int guess = 0;
     int numberOfGuesses = 0;
 
+
     srand(time(0));
 
-    rNumber = rand() % 21;
+    rNumber = rand() % maxnum +1;
 
 
 
     while (true) {
 
-        cout << "Try to guess the number i'm thinking of between 0 and 20." << endl;
+
+        cout << "Try to guess the number i'm thinking of between 0 and " << maxnum << "." << endl;
         cin >> guess; cout << endl;
         numberOfGuesses++;
 
@@ -31,8 +43,8 @@ int game() {
             break;
         }
 
-        if (guess < 0 || guess > 20) {
-            cout << "Try to guess number between 0 to 20" << endl;
+        if (guess < 0 || guess > maxnum) {
+            cout << "Try to guess number between 0 and " << maxnum << "." << endl;
 
         }
 
@@ -55,16 +67,11 @@ int game() {
     cin >> newGame;
 
     if (newGame == 'y') {
-        return game();
+        return game(maxnum);
     }else {
         return 0;
     }
-    return 0;
-}
-int main()
-{
-    game();
-    return 0;
+    return numberOfGuesses;
 }
 
 
